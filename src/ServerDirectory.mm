@@ -73,7 +73,15 @@ void ServerDirectory::refresh( bool isAnnounce )
         mServerList = foundServers;
     }
     
-    if(isAnnounce ) { mAnnouncedSignal( eventArgs ); } else { mRetiredSignal( eventArgs ); }
+    if(isAnnounce ) {
+        mAnnouncedSignal.emit(eventArgs);
+        /*mAnnouncedSignal( eventArgs );*/}
+    else {
+        
+//        mRetiredSignal.emmit( eventArgs );
+        mRetiredSignal.emit( eventArgs );
+    
+    }
 }
 
 bool ServerDirectory::serverExists( const std::string& serverName, const std::string& appName )

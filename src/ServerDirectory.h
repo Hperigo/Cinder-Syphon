@@ -1,7 +1,7 @@
 #pragma once
 
 #include "cinder/Cinder.h"
-#include <boost/signals2.hpp>
+#include "Cinder/Signals.h"
 #include <algorithm>
 
 namespace reza { namespace syphon {
@@ -18,9 +18,10 @@ public:
     std::string mServerName, mAppName;
 };
 
-typedef boost::signals2::signal<void( std::vector<ServerDescription> )> SyphonServerAnnouncedSignal;
-typedef boost::signals2::signal<void( std::vector<ServerDescription> )> SyphonServerUpdatedSignal;
-typedef boost::signals2::signal<void( std::vector<ServerDescription> )> SyphonServerRetiredSignal;
+    
+typedef ci::signals::Signal<void( std::vector<ServerDescription> )> SyphonServerAnnouncedSignal;
+typedef ci::signals::Signal<void( std::vector<ServerDescription> )> SyphonServerUpdatedSignal;
+typedef ci::signals::Signal<void( std::vector<ServerDescription> )> SyphonServerRetiredSignal;
 
 class ServerDirectory {
 public:
